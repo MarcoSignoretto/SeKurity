@@ -1,4 +1,6 @@
 # SeKurity
+[ ![Download](https://api.bintray.com/packages/marcosignoretto/maven/io.github.marcosignoretto%3Asekurity/images/download.svg) ](https://bintray.com/marcosignoretto/maven/io.github.marcosignoretto%3Asekurity/_latestVersion)
+
 Utility functions for data Encryption on Android
 
 This library provides a couple of classes for easy encryption and decryption of data without key management
