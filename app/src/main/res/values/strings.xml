@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SeKurity</string>
+    <string name="clear_text">Clear text</string>
+    <string name="cipher_text">Cipher text</string>
+    <string name="encrypt">Encrypt</string>
+    <string name="decrypt">Decrypt</string>
 </resources>
