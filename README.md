@@ -4,16 +4,14 @@ Utility functions for data Encryption on Android
 This library provides a couple of classes for easy encryption and decryption of data without key management
 for API 23 or above.
 
-
-
 ### Helpers
 
-> StringCipher
-> FileCipher
+1. `StringCipher`
+2. `FileCipher`
 
 ### Ciphers
 
-> AESCipher (bytes or bytes stream manipulation)
+1. `AESCipher` (bytes or bytes stream manipulation)
 
 ## Setup
 
