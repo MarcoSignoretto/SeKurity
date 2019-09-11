@@ -16,6 +16,18 @@ for API 23 or above.
 1. `AESCipher` (bytes or bytes stream manipulation)
 
 ## Setup
+In your root `build.gradle` add
+
+```groovy
+allprojects {
+    repositories {
+        ...
+
+        maven { url "https://dl.bintray.com/marcosignoretto/maven/" }
+    }
+}
+
+```
 
 In your module `build.gradle` include the following dependency
 
