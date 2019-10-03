@@ -32,7 +32,7 @@ allprojects {
 In your module `build.gradle` include the following dependency
 
 ```groovy
-implementation 'io.github.marcosignoretto:sekurity:1.0.0'
+implementation 'io.github.marcosignoretto:sekurity:1.1.0'
 ```
 
 ## Usage
