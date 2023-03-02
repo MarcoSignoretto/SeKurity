@@ -1,4 +1,4 @@
-package io.github.marcosignoretto.sekurity
+package io.github.marcosignoretto.sekurity.app
 
 import android.os.Bundle
 import android.util.Base64
@@ -6,6 +6,9 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import io.github.marcosignoretto.sekurity.AESCipher
+import io.github.marcosignoretto.sekurity.AppKeyStore
+import io.github.marcosignoretto.sekurity.StringCipher
 import javax.crypto.SecretKey
 
 class MainActivity : AppCompatActivity() {
