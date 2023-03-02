@@ -1,6 +1,4 @@
-import org.gradle.api.publish.maven.MavenPublication
 import java.util.Properties
-
 
 plugins {
     id("com.android.library")
@@ -8,17 +6,8 @@ plugins {
     id("maven-publish")
 }
 
-val compile_sdk = 33
-val min_sdk = 23
-val target_sdk = 33
-val junit_version = "4.13.2"
-val version = "1.1.0"
-
 android {
-    compileSdk = compile_sdk
     defaultConfig {
-        minSdk = min_sdk
-        targetSdk = target_sdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -27,20 +16,11 @@ android {
             withSourcesJar()
         }
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
     namespace = "io.github.marcosignoretto.sekurity"
 }
 
 dependencies {
-    testImplementation("junit:junit:$junit_version")
+    testImplementation(libs.junit)
 }
 
 val siteUrl = "https://github.com/MarcoSignoretto/SeKurity"

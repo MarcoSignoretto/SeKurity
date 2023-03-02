@@ -1,0 +1,13 @@
+[versions]
+
+#compileSdk = 33
+#minSdk = 23
+#targetSdk = 33
+junit = "4.13.2"
+kotlin = "1.8.10"
+sekurity = "1.1.0"
+
+[libraries]
+junit = { module = "junit:junit", version.ref = "junit" }
+
+plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
