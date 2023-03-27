@@ -1,4 +1,4 @@
-package io.github.marcosignoretto.sekurity
+package com.msignoretto.sekurity
 
 import java.security.SecureRandom
 import javax.crypto.KeyGenerator

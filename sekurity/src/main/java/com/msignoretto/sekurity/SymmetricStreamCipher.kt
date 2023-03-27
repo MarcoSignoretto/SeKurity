@@ -1,4 +1,4 @@
-package io.github.marcosignoretto.sekurity
+package com.msignoretto.sekurity
 
 import java.io.InputStream
 import java.io.OutputStream

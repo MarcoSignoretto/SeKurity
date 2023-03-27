@@ -5,12 +5,12 @@ plugins {
 
 android {
     defaultConfig {
-        applicationId = "io.github.marcosignoretto.sekurity.app"
+        applicationId = "com.msignoretto.sekurity.app"
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    namespace = "io.github.marcosignoretto.sekurity.app"
+    namespace = "com.msignoretto.sekurity.app"
 }
 
 dependencies {

@@ -1,4 +1,4 @@
-package io.github.marcosignoretto.sekurity
+package com.msignoretto.sekurity
 
 import android.content.Context
 import android.security.keystore.KeyGenParameterSpec

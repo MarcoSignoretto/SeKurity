@@ -1,5 +1,5 @@
 # SeKurity
-[ ![Download](https://api.bintray.com/packages/marcosignoretto/maven/io.github.marcosignoretto%3Asekurity/images/download.svg) ](https://bintray.com/marcosignoretto/maven/io.github.marcosignoretto%3Asekurity/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/marcosignoretto/maven/com.msignoretto%3Asekurity/images/download.svg) ](https://bintray.com/marcosignoretto/maven/com.msignoretto%3Asekurity/_latestVersion)
 
 Utility functions for data Encryption on Android
 
@@ -32,7 +32,7 @@ allprojects {
 In your module `build.gradle` include the following dependency
 
 ```groovy
-implementation 'io.github.marcosignoretto:sekurity:1.1.0'
+implementation 'com.msignoretto:sekurity:1.1.0'
 ```
 
 ## Usage

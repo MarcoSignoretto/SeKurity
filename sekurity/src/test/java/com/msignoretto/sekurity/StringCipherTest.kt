@@ -1,4 +1,4 @@
-package io.github.marcosignoretto.sekurity
+package com.msignoretto.sekurity
 
 import junit.framework.TestCase.assertEquals
 import org.junit.Test

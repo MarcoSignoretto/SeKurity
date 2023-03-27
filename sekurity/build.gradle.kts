@@ -16,7 +16,7 @@ android {
             withSourcesJar()
         }
     }
-    namespace = "io.github.marcosignoretto.sekurity"
+    namespace = "com.msignoretto.sekurity"
 }
 
 dependencies {
@@ -25,12 +25,12 @@ dependencies {
 
 val siteUrl = "https://github.com/MarcoSignoretto/SeKurity"
 val gitUrl = "https://github.com/MarcoSignoretto/SeKurity.git"
-group = "io.github.marcosignoretto"
+group = "com.msignoretto"
 
 publishing {
     publications {
         register<MavenPublication>("release") {
-            groupId = "io.github.marcosignoretto"
+            groupId = "com.msignoretto"
             artifactId = "sekurity"
             version = libs.versions.sekurity.get()
 

@@ -1,4 +1,4 @@
-package io.github.marcosignoretto.sekurity
+package com.msignoretto.sekurity
 
 import java.nio.charset.StandardCharsets
 import javax.crypto.SecretKey
