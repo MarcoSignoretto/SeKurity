@@ -27,7 +27,6 @@ dependencies {
 
 val siteUrl = "https://github.com/MarcoSignoretto/SeKurity"
 val gitUrl = "https://github.com/MarcoSignoretto/SeKurity.git"
-group = "com.msignoretto"
 
 val prop = Properties().apply {
     load(FileInputStream(File(rootProject.rootDir, "local.properties")))
@@ -37,7 +36,7 @@ publishing {
     publications {
 
             register<MavenPublication>("release") {
-                groupId = "com.msignoretto"
+                groupId = rootProject.group.toString()
                 artifactId = "sekurity"
                 version = libs.versions.sekurity.get()
 

@@ -40,6 +40,7 @@ val javaVersion = JavaVersion.VERSION_1_8
 
 
 allprojects {
+    group = "com.msignoretto.sekurity"
     repositories {
         google()
         mavenCentral()

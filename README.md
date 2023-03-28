@@ -20,7 +20,7 @@ for API 23 or above.
 In your module `build.gradle` include the following dependency
 
 ```groovy
-implementation 'com.msignoretto:sekurity:1.1.0'
+implementation 'com.msignoretto.sekurity:sekurity:1.1.0'
 ```
 
 ## Usage
