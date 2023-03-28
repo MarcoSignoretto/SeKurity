@@ -1,7 +1,7 @@
 # SeKurity
-[ ![Download](https://api.bintray.com/packages/marcosignoretto/maven/com.msignoretto%3Asekurity/images/download.svg) ](https://bintray.com/marcosignoretto/maven/com.msignoretto%3Asekurity/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.msignoretto.sekurity/sekurity/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.msignoretto.sekurity/sekurity/)
 
-Utility functions for data Encryption on Android
+Utility functions for data Encryption and Decryption
 
 This library provides a couple of classes for easy encryption and decryption of data without key management
 for API 23 or above.
