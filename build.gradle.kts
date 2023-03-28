@@ -7,10 +7,28 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.4.1")
+        classpath("com.android.tools.build:gradle:7.4.2")
         classpath(libs.plugin.kotlin)
-        classpath("com.github.dcendents:android-maven-gradle-plugin:1.5")
-        classpath("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3")
+    }
+}
+
+plugins{
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+}
+
+val prop = java.util.Properties().apply {
+    load(java.io.FileInputStream(File(rootProject.rootDir, "local.properties")))
+}
+
+nexusPublishing{
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            username.set(prop["ossrhUsername"] as String)
+            password.set(prop["ossrhPassword"] as String)
+            stagingProfileId.set(prop["sonatypeStagingProfileId"] as String)
+        }
     }
 }
 

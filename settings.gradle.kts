@@ -8,5 +8,6 @@ pluginManagement {
 }
 
 
-include ':app', ':sekurity'
-rootProject.name='SeKurity'
+include(":app")
+include(":sekurity")
+rootProject.name="SeKurity"
