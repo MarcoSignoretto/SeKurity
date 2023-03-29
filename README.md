@@ -2,7 +2,6 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.msignoretto.sekurity/sekurity/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.msignoretto.sekurity/sekurity/)
 [![License](https://img.shields.io/github/license/MarcoSignoretto/Sekurity)](https://img.shields.io/github/license/MarcoSignoretto/Sekurity)
 
-https://img.shields.io/github/license/MarcoSignoretto/Sekurity
 Utility functions for data Encryption and Decryption
 
 This library provides a couple of classes for easy encryption and decryption of data without key management
