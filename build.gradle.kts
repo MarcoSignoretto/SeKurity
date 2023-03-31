@@ -1,19 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.4.2")
-        classpath(libs.plugin.kotlin)
-    }
-}
-
 plugins{
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    alias(libs.plugins.nexus.publish)
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
 }
 
 val prop = java.util.Properties().apply {

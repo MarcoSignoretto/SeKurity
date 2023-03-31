@@ -6,8 +6,25 @@
 junit = "4.13.2"
 kotlin = "1.8.10"
 sekurity = "1.1.0"
+agp = "7.4.2"
+androidxTestRunner = "1.5.2"
+espresso = "3.5.1"
+constraintLayout = "2.1.4"
+androidxCore = "1.9.0"
+androidxAppCompat = "1.6.1"
+nexusPublish = "1.1.0"
 
 [libraries]
 junit = { module = "junit:junit", version.ref = "junit" }
+test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayout" }
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppCompat" }
 
-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+[plugins]
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexusPublish" }
+

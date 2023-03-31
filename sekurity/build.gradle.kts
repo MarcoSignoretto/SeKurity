@@ -2,10 +2,10 @@ import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("maven-publish")
-    id("signing")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    `maven-publish`
+    signing
 }
 
 android {
