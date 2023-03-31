@@ -3,7 +3,7 @@ import java.io.FileInputStream
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.multiplatform)
     `maven-publish`
     signing
 }
@@ -21,8 +21,21 @@ android {
     namespace = "com.msignoretto.sekurity"
 }
 
-dependencies {
-    testImplementation(libs.junit)
+kotlin {
+    android()
+
+    sourceSets {
+
+        val androidUnitTest by getting {
+            dependencies {
+                implementation(libs.junit)
+            }
+        }
+//        val iosMain by getting
+//        val iosSimulatorArm64Main by getting {
+//            dependsOn(iosMain)
+//        }
+    }
 }
 
 val siteUrl = "https://github.com/MarcoSignoretto/SeKurity"
