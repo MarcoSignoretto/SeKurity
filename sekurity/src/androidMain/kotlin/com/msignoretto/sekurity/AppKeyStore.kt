@@ -3,22 +3,18 @@ package com.msignoretto.sekurity
 import android.content.Context
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import java.security.KeyStore
 import java.util.*
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 
-/**
- * Created by
- * Marco Signoretto
- * Android Developer
- * on 2019-07-08.
- */
+private typealias JavaKeyStore = java.security.KeyStore
+private typealias JavaSecretKeyEntry = java.security.KeyStore.SecretKeyEntry
+
 class AppKeyStore constructor(
     context: Context
-) {
+): KeyStore {
 
-    private val keyStore: KeyStore
+    private val keyStore: JavaKeyStore
     private val keyAlias: String
 
     init {
@@ -33,16 +29,16 @@ class AppKeyStore constructor(
                 .apply()
         }
         keyAlias = res
-        keyStore = KeyStore.getInstance(KEY_STORE)
+        keyStore = JavaKeyStore.getInstance(KEY_STORE)
         keyStore.load(null)
     }
 
-    fun getOrGenerate(): SecretKey {
+    override fun getOrGenerate(): SecurityKey {
         return if (keyAlias in keyStore.aliases().toList()) {
             retrieveKey(keyAlias)
         } else {
             generateKey(keyAlias)
-        }
+        }.toSecurityKey()
     }
 
     private fun generateKey(alias: String): SecretKey {
@@ -59,12 +55,11 @@ class AppKeyStore constructor(
                 .build()
         )
 
-        val secretKey = keyGenerator.generateKey()
-        return secretKey
+        return keyGenerator.generateKey()
     }
 
     private fun retrieveKey(alias: String): SecretKey {
-        val secretKeyEntry = keyStore.getEntry(alias, null) as KeyStore.SecretKeyEntry
+        val secretKeyEntry = keyStore.getEntry(alias, null) as JavaSecretKeyEntry
         return secretKeyEntry.secretKey
     }
 
