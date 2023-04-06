@@ -12,17 +12,13 @@ android {
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
     namespace = "com.msignoretto.sekurity"
 }
 
 kotlin {
     android()
+    ios()
+    iosSimulatorArm64()
 
     sourceSets {
 
@@ -31,12 +27,14 @@ kotlin {
                 implementation(libs.junit)
             }
         }
-//        val iosMain by getting
-//        val iosSimulatorArm64Main by getting {
-//            dependsOn(iosMain)
-//        }
+        val iosMain by getting
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
     }
 }
+
+// Publication configuration
 
 val siteUrl = "https://github.com/MarcoSignoretto/SeKurity"
 val gitUrl = "https://github.com/MarcoSignoretto/SeKurity.git"
@@ -45,48 +43,42 @@ val prop = Properties().apply {
     load(FileInputStream(File(rootProject.rootDir, "local.properties")))
 }
 
+group = rootProject.group.toString()
+version = libs.versions.sekurity.get()
+
+kotlin{
+    android {
+        publishLibraryVariants("release", "debug")
+    }
+}
+
 publishing {
     publications {
-
-            register<MavenPublication>("release") {
-                groupId = rootProject.group.toString()
-                artifactId = "sekurity"
-                version = libs.versions.sekurity.get()
-
-                afterEvaluate{
-                    if (project.plugins.findPlugin("com.android.library") != null) {
-                        from(components["release"])
-                    } else {
-                        from(components["java"])
+        withType<MavenPublication> {
+            pom {
+                name.set("Sekurity")
+                description.set("Utility library for data encryption and decryption")
+                url.set(siteUrl)
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://github.com/MarcoSignoretto/SeKurity/blob/master/LICENSE")
                     }
                 }
-
-//                artifact(tasks["javadocJar"]) // TODO consider adding dokka for javadoc
-
-                pom {
-                    name.set("Sekurity")
-                    description.set("Utility library for data encryption and decryption")
+                developers {
+                    developer {
+                        id.set("MarcoSignoretto")
+                        name.set("Marco Signoretto")
+                        email.set("marco.signoretto.dev@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set(gitUrl)
+                    developerConnection.set(gitUrl)
                     url.set(siteUrl)
-                    licenses {
-                        license {
-                            name.set("MIT License")
-                            url.set("https://github.com/MarcoSignoretto/SeKurity/blob/master/LICENSE")
-                        }
-                    }
-                    developers {
-                        developer {
-                            id.set("MarcoSignoretto")
-                            name.set("Marco Signoretto")
-                            email.set("marco.signoretto.dev@gmail.com")
-                        }
-                    }
-                    scm {
-                        connection.set(gitUrl)
-                        developerConnection.set(gitUrl)
-                        url.set(siteUrl)
-                    }
                 }
             }
+        }
 
         signing {
             useInMemoryPgpKeys(
