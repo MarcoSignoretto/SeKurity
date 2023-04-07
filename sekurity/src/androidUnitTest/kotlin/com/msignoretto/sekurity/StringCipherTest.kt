@@ -11,15 +11,15 @@ import org.junit.Test
  */
 class StringCipherTest {
 
-    private val stringCipher = StringCipher(cipher = AESCipher())
+    private val stringCipher = StringCipherImpl(cipher = AESCipher())
 
     @Test
     fun encryptDecrypt() {
         val key = generateKey()
         val plainText = "I'm A plain text"
 
-        val encryptedData = stringCipher.encrypt(key, plainText)
-        val plainTextResult = stringCipher.decrypt(key, encryptedData)
+        val encryptedData = stringCipher.encrypt(key.toSecurityKey(), plainText)
+        val plainTextResult = stringCipher.decrypt(key.toSecurityKey(), encryptedData)
 
         assertEquals(plainText, plainTextResult)
     }

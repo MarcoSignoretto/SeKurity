@@ -19,20 +19,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        stringCipher = StringCipher(cipher = AESCipher())
+        stringCipher = StringCipherImpl(cipher = AESCipher())
         appKeyStore = AppKeyStore(this)
         key = appKeyStore.getOrGenerate().toSecretKey()
     }
     fun encrypt(@Suppress("UNUSED_PARAMETER") view: View) {
         val text = findViewById<EditText>(R.id.clear_input).text.toString()
-        val encrypted = stringCipher.encrypt(key, text)
-        val stringEnc = Base64.encodeToString(encrypted, Base64.NO_WRAP)
+        val encrypted = stringCipher.encrypt(key.toSecurityKey(), text)
+        val stringEnc = Base64.encodeToString(encrypted.toByteArray(), Base64.NO_WRAP)
         findViewById<TextView>(R.id.encrypted_text).text = stringEnc
     }
 
     fun decrypt(@Suppress("UNUSED_PARAMETER") view: View) {
         val stringEnc = findViewById<EditText>(R.id.cipher_input).text.toString()
-        val text = stringCipher.decrypt(key, Base64.decode(stringEnc, Base64.NO_WRAP))
+        val text = stringCipher.decrypt(key.toSecurityKey(), Base64.decode(stringEnc, Base64.NO_WRAP).toBinaryData())
         findViewById<TextView>(R.id.decrypted_text).text = text
     }
 }

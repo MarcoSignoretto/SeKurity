@@ -19,12 +19,12 @@ class AESCipherTest {
     @Test
     fun encryptDecryption() {
         val key = generateKey()
-        val plainData = Random.Default.nextBytes(23)
+        val plainData = Random.Default.nextBytes(23).toBinaryData()
 
-        val cipherData = cipher.encrypt(key, plainData)
-        val plainDataBack = cipher.decrypt(key, cipherData)
+        val cipherData = cipher.encrypt(key.toSecurityKey(), plainData)
+        val plainDataBack = cipher.decrypt(key.toSecurityKey(), cipherData).toByteArray()
 
-        assertTrue(plainData.contentEquals(plainDataBack))
+        assertTrue(plainData.toByteArray().contentEquals(plainDataBack))
     }
 
 
@@ -46,18 +46,18 @@ class AESCipherTest {
 
     @Test
     fun differentCipherDataIfEncryptedTwice() {
-        val plainData = Random.Default.nextBytes(23)
+        val plainData = Random.Default.nextBytes(23).toBinaryData()
         val key = generateKey()
 
-        val cipherData = cipher.encrypt(key, plainData)
-        val plainDataBack = cipher.decrypt(key, cipherData)
+        val cipherData = cipher.encrypt(key.toSecurityKey(), plainData)
+        val plainDataBack = cipher.decrypt(key.toSecurityKey(), cipherData).toByteArray()
 
-        assertTrue(plainData.contentEquals(plainDataBack))
+        assertTrue(plainData.toByteArray().contentEquals(plainDataBack))
 
-        val cipherData2 = cipher.encrypt(key, plainData)
-        val plainDataBack2 = cipher.decrypt(key, cipherData)
+        val cipherData2 = cipher.encrypt(key.toSecurityKey(), plainData).toByteArray()
+        val plainDataBack2 = cipher.decrypt(key.toSecurityKey(), cipherData).toByteArray()
 
-        assertTrue(plainData.contentEquals(plainDataBack2))
-        assertFalse(cipherData.contentEquals(cipherData2))
+        assertTrue(plainData.toByteArray().contentEquals(plainDataBack2))
+        assertFalse(cipherData.toByteArray().contentEquals(cipherData2))
     }
 }

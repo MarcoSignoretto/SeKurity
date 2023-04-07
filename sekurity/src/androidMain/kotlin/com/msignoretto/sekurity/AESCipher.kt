@@ -19,19 +19,20 @@ class AESCipher : SymmetricCipher, SymmetricStreamCipher {
     /**
      * @return pair of iv and encryptedData
      */
-    override fun encrypt(secretKey: SecretKey, plainData: ByteArray): ByteArray {
+    override fun encrypt(securityKey: SecurityKey, plainData: BinaryData): BinaryData {
         val cipher = Cipher.getInstance(ALGORITHM)
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey)
-        return (cipher.iv).plus(cipher.doFinal(plainData))
+        cipher.init(Cipher.ENCRYPT_MODE, securityKey.toSecretKey())
+        return (cipher.iv).plus(cipher.doFinal(plainData.toByteArray())).toBinaryData()
     }
 
-    override fun decrypt(secretKey: SecretKey, encryptedData: ByteArray): ByteArray {
+    override fun decrypt(securityKey: SecurityKey, encryptedData: BinaryData): BinaryData {
+        val encryptedData = encryptedData.toByteArray()
         val iv = encryptedData.sliceArray(0 until 12)
         val realEncryptedData = encryptedData.sliceArray(12 until encryptedData.size)
         val cipher = Cipher.getInstance(ALGORITHM)
         val spec = GCMParameterSpec(128, iv)
-        cipher.init(Cipher.DECRYPT_MODE, secretKey, spec)
-        return cipher.doFinal(realEncryptedData)
+        cipher.init(Cipher.DECRYPT_MODE, securityKey.toSecretKey(), spec)
+        return cipher.doFinal(realEncryptedData).toBinaryData()
     }
 
     override fun encryptStream(
